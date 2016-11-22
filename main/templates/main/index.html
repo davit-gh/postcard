@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles custom_tags widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +6,7 @@
 Fitness Template
 http://www.templatemo.com/tm-487-fitness
 -->
-<title>Ամանօրյա բացիկ - շնորհավորիր տոնը յուրովի</title>
+<title>Ամանորյա բացիկ - շնորհավորիր տոնը յուրովի</title>
 <meta name="description" content="">
 <meta name="author" content="">
 <meta charset="UTF-8">
@@ -19,6 +19,7 @@ http://www.templatemo.com/tm-487-fitness
 <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/owl.theme.css' %}">
 <link rel="stylesheet" href="{% static 'main/css/owl.carousel.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/magnific-popup.css' %}">
 
 <!-- Main css -->
 <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
@@ -68,12 +69,24 @@ http://www.templatemo.com/tm-487-fitness
 	</div>
 </div>
 
-
+            
+            
+            
 <!-- =========================
     HOME SECTION   
 ============================== -->
 <section id="home" class="parallax-section">
 	<div class="container">
+		{% if messages %}
+            <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message }}
+            </div>
+            {% endfor %}
+            </div>
+            {% endif %}
 		<div class="row">
 
 			<div class="col-md-offset-1 col-md-10 col-sm-12">
@@ -104,8 +117,8 @@ http://www.templatemo.com/tm-487-fitness
 			<div class="wow fadeInUp col-md-4 col-sm-12" data-wow-delay="1s">
 				<div class="overview-detail">
 					<h2>Մեր Մասին</h2>
-					<p>Մենք վաճառում ենք տոնական տրամադրություն՝ ձեռագործ բացիկների տեսքով, որոնք պատրաստել են երեխաները։</p>
-					<p>Ընտրեք բացիկը, գրեք շնորհավորական տեքստը, լրացրեք հասցեն, վճարեք բանկային քարտով։ Մենք կգրենք տեքստը բացիկի վրա և կուղարկենք նված հասցեով։ Եկամուտը կուղղվի հենց նույն երեխաների տոնը գունազարդելու համար։</p>
+					<p>Մենք վաճառում ենք տոնական տրամադրություն՝ ձեռագործ բացիկների տեսքով։</p>
+					<p>Ընտրեք բացիկը, գրեք շնորհավորական տեքստը, լրացրեք հասցեն, վճարեք բանկային քարտով։ Մենք կգրենք տեքստը բացիկի վրա և կուղարկենք նված հասցեով։ Ամբողջ եկամուտի մոտ 30%-ը կուղղվի բարեգործությանը։</p>
 					<a href="#trainer" class="btn btn-default smoothScroll">Եկեք Սկսենք</a>
 				</div>
 			</div>
@@ -123,68 +136,275 @@ http://www.templatemo.com/tm-487-fitness
 <section id="trainer" class="parallax-section">
 	<div class="container">
 		<div class="row">
+			<div class="tm-img-gallery-container">
 
-			<div class="wow fadeInUp col-md-12 col-sm-12" data-wow-delay="1.3s">
-				<h2>Մեր Բացիկները</h2>
-				<p>Ընտրեք բացիկներից ցանկացածը։ Յուրաքանչյուրը պատրաստվել է մանկական սրտիկի ներդրումով)</p>
-			</div>
-
-			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.9s">
-				<div class="trainer-thumb">
-					<img src="{% static 'main/images/pc1.jpg' %}" class="img-responsive" alt="Trainer">
-						<div class="trainer-overlay">
-							<div class="centered-elements">
-								<div class="col-md-12 col-sm-12">
-									<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
-								</div>	
-								<div class="col-md-12 col-sm-12 margin-top-20">
-									<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
-								</div>	
-								<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
-							</div>
+	            <div class="tm-img-gallery gallery-one">
+	            <!-- Gallery One pop up connected with JS code below -->
+	                
+	                <div class="wow fadeInUp tm-img-gallery-info-container" data-wow-delay="1.3s">
+	                	
+	                    <h2 class="tm-text-title tm-gallery-title">Մեր Բացիկները</h2>
+	                    <p class="tm-text">Ընտրեք բացիկներից ցանկացածը։ Յուրաքանչյուրը պարունակում է ամանորյա տոնական տրամադրություն։
+	                    </p>                                    
+	                
+	                </div>
+				
+	                <div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.9s">
+							<a href="{% static 'main/images/1.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/1.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ, թափանցիկ թաղանթ, ժապավեն։</p>
 						</div>
-				</div>
-				<p>Փոքրիկի գործ է, բայց փոքր գործ չէ։ Մեծ կենտրոնացում է պահանջում։</p>
-			</div>
-
-			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2s">
-				<div class="trainer-thumb">
-					<img src="{% static 'main/images/pc2.jpg' %}" class="img-responsive" alt="Trainer">
-						<div class="trainer-overlay">
-							<div class="centered-elements">
-								<div class="col-md-12 col-sm-12">
-									<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
-								</div>	
-								<div class="col-md-12 col-sm-12 margin-top-20">
-									<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
-								</div>	
-								<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
-							</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.9s">
+							<a href="{% static 'main/images/19.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/19.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ, ժապավեն։</p>
 						</div>
-				</div>
-				<p>Պատրաստված է փոքրիկ ձեռքերով։ Օգտագործված է թուղթ, մկրատ, երևակայություն</p>
-			</div>
-
-			<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2.3s">
-				<div class="trainer-thumb">
-					<img src="{% static 'main/images/pc3.jpg' %}" class="img-responsive" alt="Trainer">
-						<div class="trainer-overlay">
-							<div class="centered-elements">
-								<div class="col-md-12 col-sm-12">
-									<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
-								</div>	
-								<div class="col-md-12 col-sm-12 margin-top-20">
-									<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
-								</div>	
-								<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
-							</div>
+					</div>
+					
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2.3s">
+							<a href="{% static 'main/images/3.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/3.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ, ժապավեն, փայտիկներ։</p>
 						</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.9s">
+							<a href="{% static 'main/images/4.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/4.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ , ժապավեն, փայլազարդ։</p>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2s">
+							<a href="{% static 'main/images/5.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/5.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ , ուլունք։</p>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2.3s">
+							<a href="{% static 'main/images/6.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/6.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ։</p>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.9s">
+							<a href="{% static 'main/images/7.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/7.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ։</p>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2s">
+							<a href="{% static 'main/images/8.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/8.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ, ժապավեն։</p>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2.3s">
+							<a href="{% static 'main/images/9.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/9.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ։</p>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2s">
+							<a href="{% static 'main/images/2.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/2.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Միայն թուղթ</p>
+						</div>		
+					</div>	
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2s">
+							<a href="{% static 'main/images/20.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/20.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ։</p>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="2.3s">
+							<a href="{% static 'main/images/21.jpg' %}">
+								<div class="trainer-thumb">
+									<img src="{% static 'main/images/21.jpg' %}" class="img-responsive" alt="Trainer">
+										<div class="trainer-overlay">
+											<div class="centered-elements">
+												<div class="col-md-12 col-sm-12">
+													<textarea rows="3" class="form-control" placeholder="Բացիկի տեքստը"></textarea>
+												</div>	
+												<div class="col-md-12 col-sm-12 margin-top-20">
+													<input type="text" class="form-control" placeholder="Ուղարկման հասցեն">
+												</div>	
+												<input name="pay" class="margin-top-20" type="submit" id="pay" value="Վճարել">
+											</div>
+										</div>
+								</div>
+							</a>
+							<p>Թուղթ։</p>
+						</div>
+					</div>
 				</div>
-				<p>Պատրաստված է մանկական ձեռքերով։ Ներշնչված է մուլտֆիլմերից։</p>
 			</div>
-
 		</div>
-	</div>
 </section>
 
 
@@ -198,16 +418,20 @@ http://www.templatemo.com/tm-487-fitness
 			<div class="wow fadeInUp col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10" data-wow-delay="0.9s">
 				<h2>Կապվեք Մեզ Հետ</h2>
 				<p>Ուղարկեք մեզ նամակ եթե ունեք հարցեր կամ ուղղակի ուզում եք բարևել։)</p>
+				
 				<div class="newsletter_detail">
-					<form action="#" method="post" id="newsletter-signup">
+					<form action="{% url 'index' %}" method="post" id="newsletter-signup">
+						{% csrf_token %}
 						<div class="col-md-6 col-sm-6">
-							<input name="name" type="text" class="form-control" id="name" placeholder="Ձեր անունը">
+							{% render_field form.name class="form-control" id="name" placeholder="Ձեր անունը" %}
+							
 					  	</div>
 						<div class="col-md-6 col-sm-6">
-							<input name="email" type="email" class="form-control" id="email" placeholder="Ձեր էլ․ հասցեն">
+							{% render_field form.email class="form-control" id="email" placeholder="Ձեր էլ․ հասցեն" %}
 					  	</div>
 					  	<div class="col-sm-12">
-							<textarea rows="4" name="message" class="form-control" id="message" placeholder="Ձեր նամակը"></textarea>
+					  		{% render_field form.description rows="4" class="form-control" id="message" placeholder="Ձեր նամակը" %}
+							
 					  	</div>
 						<div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
 							<input name="submit" type="submit" class="form-control" id="submit" value="Ուղարկել Նամակը">
@@ -335,12 +559,14 @@ http://www.templatemo.com/tm-487-fitness
 <!-- =========================
     TESTIMONIAL SECTION   
 ============================== -->
+<!--
 <section id="testimonial" class="parallax-section">
 	<div class="container">
 		<div class="row">
-
+-->
 			<!-- Testimonial Owl Carousel section
 			================================================== -->
+	<!--
 			<div id="owl-testimonial" class="owl-carousel">
 
 				<div class="item col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 wow fadeInUp" data-wow-delay="0.6s">
@@ -372,7 +598,7 @@ http://www.templatemo.com/tm-487-fitness
 		</div>
 	</div>
 </section>
-
+-->
 
 <!-- =========================
     FOOTER SECTION   
@@ -425,6 +651,7 @@ http://www.templatemo.com/tm-487-fitness
 <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
 <script src="{% static 'main/js/smoothscroll.js' %}"></script>
 <script src="{% static 'main/js/wow.min.js' %}"></script>
+<script src="{% static 'main/js/jquery.magnific-popup.min.js' %}"></script>
 <script src="{% static 'main/js/custom.js' %}"></script>
 
 </body>

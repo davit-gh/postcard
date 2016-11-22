@@ -3,6 +3,13 @@
   -----------------------------------------------*/
 $(window).load(function(){
     $('.preloader').fadeOut(1000); // set duration in brackets    
+    /* Gallery One pop up
+      -----------------------------------------*/
+      $('.gallery-one').magnificPopup({
+          delegate: 'a', // child items selector, by clicking on it popup will open
+          type: 'image',
+          gallery:{enabled:true}                
+      });
 });
 
 

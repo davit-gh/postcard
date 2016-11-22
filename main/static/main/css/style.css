@@ -1016,3 +1016,9 @@ footer .copyright-text {
   padding: 5px 10px;
   font-weight: 600;
 }
+
+.alert-error {
+    color: #31708f;
+    background-color: #f2dede;
+    border-color: #a94442;
+}

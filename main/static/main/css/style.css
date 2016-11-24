@@ -338,6 +338,7 @@ a {
   right: 0px;
   bottom: 0px;
   left: 0px;
+  background-color: rgba(245, 245, 245, 0.5);
   transition: all 0.4s ease-in-out;
 }
 
@@ -1005,7 +1006,7 @@ footer .copyright-text {
 
 .centered-elements{
   position: absolute;
-  top: 36%;
+  top: 5%;
 }
 
 .margin-top-20{
@@ -1021,4 +1022,10 @@ footer .copyright-text {
     color: #31708f;
     background-color: #f2dede;
     border-color: #a94442;
+}
+
+.font-style{
+  font-size: 30px;
+  font-weight: 600;
+  color: #000;
 }
